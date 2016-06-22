@@ -14,8 +14,9 @@ function daysLeft() {
     var b = today.getTime();
     var c = 24*60*60*1000;
     var diffDays = Math.round((a - b)/c);
-
-    resultString = ("<p>You have " + diffDays + " days left!");
+    if (diffDays  < 0) {
+    	resultString = ("<p>Silly you, you are living in the past!");
+    }  else resultString = ("<p>You have " + diffDays + " days left!");
 }
 
 $("#datepicker").on("change", function(){
@@ -24,12 +25,22 @@ $("#datepicker").on("change", function(){
 });
 
 
+
+$(".endDate").on("change", function(){
+	var captureInput = $(".endDate").val();
+    $("#result").html("Click " + captureInput + " below to calculate");
+});
+
+//16. Capture the input that is in the element with class ‘endDate’.  Save this as a variable.
+
+
+
 // 16. STRETCH Challenges:
 
 // For the highly ambitious, you may write a couple if statements and customize the result HTML string accordingly.
 // Here are the possibilities I've thought of; there may be more.
-// condition 1:  there is an input but someone has selected a date in the past
-// condition 2:  there is an input and the day is tomorrow
+// condition 1:  there is an input but someone has selected a date in the past DONE!
+// condition 2:  there is an input and the day is tomorrow  
 // condition 3:  there is an input and the date is in the future
 // condition 4:  there is NO input but someone has selected a date in the past
 // condition 5:  there is NO input and the day is tomorrow
